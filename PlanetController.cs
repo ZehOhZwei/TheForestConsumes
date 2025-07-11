@@ -1,57 +1,54 @@
 using Godot;
 using System;
+using System.Diagnostics;
 
 public partial class PlanetController : CsgSphere3D
 {
-	private float _rotationX = 0f;
-	private float _rotationY = 0f;
-	private float LookAroundSpeed = 0.01f;
 
-	/*public override void _Input(InputEvent @event)
-	{
-		if (@event is InputEventMouseMotion mouseMotion)
-		{
-			// modify accumulated mouse rotation
-			_rotationX += mouseMotion.Relative.X * LookAroundSpeed;
-			_rotationY += mouseMotion.Relative.X * LookAroundSpeed;
+    Vector3 direction = Vector3.Zero;
+    float rotationAmount = 0.0025f;
+    int spawnInterval = 30;
+    int tickCounter = 0;
 
-			// reset rotation
-			Transform3D transform = Transform;
-			transform.Basis = Basis.Identity;
-			Transform = transform;
+    public override void _PhysicsProcess(double delta)
+    {
+        // We create a local variable to store the input direction.
+        Transform3D transform = Transform;
 
-			RotateObjectLocal(Vector3.Up, _rotationX); // first rotate about Y
-			RotateObjectLocal(Vector3.Back, _rotationY); // then rotate about X
-		}
-	}*/
+        if (tickCounter >= spawnInterval)
+        {
+            tickCounter = 0;
+            var scene = GD.Load<PackedScene>("res://ForestPlaceholder.tscn");
+            Node3D instance = (Node3D)scene.Instantiate();
+            AddChild(instance);
+            instance.GlobalPosition = new Vector3(0, 0, 1);
+            instance.GlobalRotation = Vector3.Zero;
+        }
 
-	public override void _PhysicsProcess(double delta)
-	{
-		// We create a local variable to store the input direction.
-		var direction = Vector3.Zero;
-		Transform3D transform = Transform;
-		float rotationAmount = 0.01f;
-
-		// We check for each move input and update the direction accordingly.
-		if (Input.IsActionPressed("moveRight"))
-		{
-			transform.Basis = transform.Basis.Rotated(Vector3.Down, rotationAmount);
-			Transform = transform;
-		}
-		if (Input.IsActionPressed("moveLeft"))
-		{
-			transform.Basis = transform.Basis.Rotated(Vector3.Up, rotationAmount);
-			Transform = transform;
-		}
-		if (Input.IsActionPressed("moveDown"))
-		{
-			transform.Basis = transform.Basis.Rotated(Vector3.Left, rotationAmount);
-			Transform = transform;
-		}
-		if (Input.IsActionPressed("moveUp"))
-		{
-			transform.Basis = transform.Basis.Rotated(Vector3.Right, rotationAmount);
-			Transform = transform;
-		}
-	}
+        // We check for each move input and update the direction accordingly.
+        if (Input.IsActionPressed("moveRight"))
+        {
+            transform.Basis = transform.Basis.Rotated(Vector3.Down, rotationAmount);
+            Transform = transform;
+            tickCounter++;
+        }
+        if (Input.IsActionPressed("moveLeft"))
+        {
+            transform.Basis = transform.Basis.Rotated(Vector3.Up, rotationAmount);
+            Transform = transform;
+            tickCounter++;
+        }
+        if (Input.IsActionPressed("moveDown"))
+        {
+            transform.Basis = transform.Basis.Rotated(Vector3.Left, rotationAmount);
+            Transform = transform;
+            tickCounter++;
+        }
+        if (Input.IsActionPressed("moveUp"))
+        {
+            transform.Basis = transform.Basis.Rotated(Vector3.Right, rotationAmount);
+            Transform = transform;
+            tickCounter++;
+        }
+    }
 }
