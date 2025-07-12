@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="CylinderShape" id=1]
+
+[node name="Spatial" type="Spatial" groups=["forestHead"]]
+
+[node name="CSGCylinder" type="CSGCylinder" parent="."]
+transform = Transform( 0.025, 0, 0, 0, -2.62268e-10, -0.025, 0, 0.006, -1.09278e-09, 0, 0, 0 )
+sides = 12
+
+[node name="Area" type="Area" parent="."]
+priority = 1.0
+
+[node name="CollisionShape" type="CollisionShape" parent="Area"]
+transform = Transform( 0.025, 0, 0, 0, -2.62268e-10, -0.025, 0, 0.006, -1.09278e-09, 0, 0, 0 )
+shape = SubResource( 1 )
