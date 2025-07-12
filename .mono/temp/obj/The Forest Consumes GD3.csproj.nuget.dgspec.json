@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\oleme\\Desktop\\Game Dev\\source\\TheForestConsumes GD3\\The Forest Consumes GD3.csproj": {}
+    "C:\\Users\\oleme\\Desktop\\Game Dev\\source\\TheForestConsumes\\The Forest Consumes GD3.csproj": {}
   },
   "projects": {
-    "C:\\Users\\oleme\\Desktop\\Game Dev\\source\\TheForestConsumes GD3\\The Forest Consumes GD3.csproj": {
+    "C:\\Users\\oleme\\Desktop\\Game Dev\\source\\TheForestConsumes\\The Forest Consumes GD3.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\oleme\\Desktop\\Game Dev\\source\\TheForestConsumes GD3\\The Forest Consumes GD3.csproj",
+        "projectUniqueName": "C:\\Users\\oleme\\Desktop\\Game Dev\\source\\TheForestConsumes\\The Forest Consumes GD3.csproj",
         "projectName": "The Forest Consumes GD3",
-        "projectPath": "C:\\Users\\oleme\\Desktop\\Game Dev\\source\\TheForestConsumes GD3\\The Forest Consumes GD3.csproj",
+        "projectPath": "C:\\Users\\oleme\\Desktop\\Game Dev\\source\\TheForestConsumes\\The Forest Consumes GD3.csproj",
         "packagesPath": "C:\\Users\\oleme\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\oleme\\Desktop\\Game Dev\\source\\TheForestConsumes GD3\\.mono\\temp\\obj\\",
+        "outputPath": "C:\\Users\\oleme\\Desktop\\Game Dev\\source\\TheForestConsumes\\.mono\\temp\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\oleme\\AppData\\Roaming\\NuGet\\NuGet.Config"

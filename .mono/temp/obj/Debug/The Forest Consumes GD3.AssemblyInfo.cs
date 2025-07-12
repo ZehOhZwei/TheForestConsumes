@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("The Forest Consumes GD3")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d81520acc8c5503bf8045b378299172ac0ef255b")]
 [assembly: System.Reflection.AssemblyProductAttribute("The Forest Consumes GD3")]
 [assembly: System.Reflection.AssemblyTitleAttribute("The Forest Consumes GD3")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

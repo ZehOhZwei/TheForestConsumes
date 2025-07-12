@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "lrvkVpQ6JNM=",
+  "dgSpecHash": "xpPGVrHqSS0=",
   "success": true,
-  "projectFilePath": "C:\\Users\\oleme\\Desktop\\Game Dev\\source\\TheForestConsumes GD3\\The Forest Consumes GD3.csproj",
+  "projectFilePath": "C:\\Users\\oleme\\Desktop\\Game Dev\\source\\TheForestConsumes\\The Forest Consumes GD3.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\oleme\\.nuget\\packages\\microsoft.netframework.referenceassemblies\\1.0.3\\microsoft.netframework.referenceassemblies.1.0.3.nupkg.sha512",
     "C:\\Users\\oleme\\.nuget\\packages\\microsoft.netframework.referenceassemblies.net472\\1.0.3\\microsoft.netframework.referenceassemblies.net472.1.0.3.nupkg.sha512"
