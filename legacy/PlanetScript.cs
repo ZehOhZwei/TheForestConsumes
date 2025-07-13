@@ -37,10 +37,6 @@ public partial class PlanetScript : CSGSphere
 				instance.Call("Grow");
 				first = false;
 			}
-			else
-			{
-				instance.AddToGroup("growing");
-			}
 		}
 
 		var RotationX = 0f;

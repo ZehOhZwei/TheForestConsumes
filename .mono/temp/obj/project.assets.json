@@ -420,11 +420,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\oleme\\Desktop\\Game Dev\\source\\TheForestConsumes\\The Forest Consumes GD3.csproj",
+      "projectUniqueName": "c:\\Users\\oleme\\Desktop\\Game Dev\\source\\TheForestConsumes\\The Forest Consumes GD3.csproj",
       "projectName": "The Forest Consumes GD3",
-      "projectPath": "C:\\Users\\oleme\\Desktop\\Game Dev\\source\\TheForestConsumes\\The Forest Consumes GD3.csproj",
+      "projectPath": "c:\\Users\\oleme\\Desktop\\Game Dev\\source\\TheForestConsumes\\The Forest Consumes GD3.csproj",
       "packagesPath": "C:\\Users\\oleme\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\oleme\\Desktop\\Game Dev\\source\\TheForestConsumes\\.mono\\temp\\obj\\",
+      "outputPath": "c:\\Users\\oleme\\Desktop\\Game Dev\\source\\TheForestConsumes\\.mono\\temp\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\oleme\\AppData\\Roaming\\NuGet\\NuGet.Config"
