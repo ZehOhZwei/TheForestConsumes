@@ -6,9 +6,16 @@ using System.Linq;
 
 public class PlayerScript : Spatial
 {
-    float speed = 0.00125f;
+    float Speed = 0.00125f;
+    int Health = 100;
+    int TileStatus;
+    ProgressBar HealthBar;
 
-    int health = 100;
+    public override void _Ready()
+    {
+        HealthBar = GetChild<ProgressBar>(2);
+    }
+
 
     public override void _PhysicsProcess(float delta)
     {
@@ -18,17 +25,33 @@ public class PlayerScript : Spatial
 
         if (Input.IsActionPressed("moveRight"))
         {
-            RotationX += speed;
+            RotationX += Speed;
         }
         if (Input.IsActionPressed("moveLeft"))
         {
-            RotationX += -speed;
+            RotationX += -Speed;
         }
 
-        RotationY += -speed;
+        RotationY += -Speed;
 
         RotateObjectLocal(Vector3.Forward, RotationX * 20);
         RotateObjectLocal(Vector3.Right, RotationY);
 
+        Health += TileStatus;
+        if (Health > 100)
+        {
+            Health = 100;
+        }
+        else if (Health < 0)
+        {
+            Health = 0;
+        }
+        HealthBar.Value = Health;
     }
+
+    private void TileEntered(Area area)
+    {
+        TileStatus = (int)area.GetParent().Get("TileStatus");
+    }
+    
 }

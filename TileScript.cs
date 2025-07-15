@@ -5,24 +5,24 @@ using System;
 
 public class TileScript : Spatial
 {
-    string globid { get;} = Guid.NewGuid().ToString();
-    MeshInstance meshInstance;
-    Area area;
-    int verticesCount;
-    Dictionary<string, int>  adjacentTileStatuses = new Dictionary<string, int>();
-    int tileStatus;
-    int progress = 50;
+    string Globid { get;} = Guid.NewGuid().ToString();
+    MeshInstance MeshInstance { get; set; }
+    Area Area { get; set; }
+    int VerticesCount { get; set; }
+    Dictionary<string, int>  AdjacentTileStatuses { get; set; } = new Dictionary<string, int>();
+    int TileStatus { get; set; }
+    int Progress { get; set; } = 50;
 
     public override void _Ready()
     {
-        meshInstance = GetChild<MeshInstance>(0);
-        area = GetChild<Area>(1);
+        MeshInstance = GetChild<MeshInstance>(0);
+        Area = GetChild<Area>(1);
 
-        area.GetChild<CollisionShape>(0).Shape = meshInstance.Mesh.CreateConvexShape();
-        area.GetChild<CollisionShape>(0).Shape.Margin = 0.001f;
+        Area.GetChild<CollisionShape>(0).Shape = MeshInstance.Mesh.CreateConvexShape();
+        Area.GetChild<CollisionShape>(0).Shape.Margin = 0.001f;
 
-        var vertices = (Vector3[])meshInstance.Mesh.SurfaceGetArrays(0)[0];
-        verticesCount = vertices.Length;
+        var vertices = (Vector3[])MeshInstance.Mesh.SurfaceGetArrays(0)[0];
+        VerticesCount = vertices.Length;
         var total = new Vector3();
         foreach (var vertex in vertices)
         {
@@ -30,38 +30,38 @@ public class TileScript : Spatial
         }
         var position = total / vertices.Length;
         Translate(position);
-        meshInstance.Translate(-position);
-        area.Translate(-position);
+        MeshInstance.Translate(-position);
+        Area.Translate(-position);
 
         var r = new Random();
-        tileStatus = r.Next(-3, 3);
+        TileStatus = r.Next(-3, 3);
         SetColor();
     }
 
-    private void AdjacentStatusChanged(string globid, int status)
+    private void AdjacentStatusChanged(string Globid, int status)
     {
-        if (adjacentTileStatuses.Keys.Contains(globid))
+        if (AdjacentTileStatuses.Keys.Contains(Globid))
         {
-            adjacentTileStatuses[globid] = status;
+            AdjacentTileStatuses[Globid] = status;
         }
-        else if(adjacentTileStatuses.Count < verticesCount)
+        else if(AdjacentTileStatuses.Count < VerticesCount)
         {
-            adjacentTileStatuses.Add(globid, status);
+            AdjacentTileStatuses.Add(Globid, status);
         }
     }
 
     private void UpdateStatus()
     {
-        progress += adjacentTileStatuses.Values.Sum();
-        if (progress > 100)
+        Progress += AdjacentTileStatuses.Values.Sum();
+        if (Progress > 100)
         {
             Forestify();
-            progress = 50;
+            Progress = 50;
         }
-        else if (progress < 0)
+        else if (Progress < 0)
         {
             Urbanize();
-            progress = 50;
+            Progress = 50;
 
         }
     }
@@ -77,21 +77,21 @@ public class TileScript : Spatial
 
     private void Forestify()
     {
-        if (tileStatus < 3)
+        if (TileStatus < 3)
         {
-            tileStatus++;
+            TileStatus++;
             SetColor();
-            EmitSignal(nameof(status_changed), globid, tileStatus);
+            EmitSignal(nameof(status_changed), Globid, TileStatus);
         }
     }
 
     private void Urbanize()
     {
-        if (tileStatus > -3)
+        if (TileStatus > -3)
         {            
-            tileStatus--;
+            TileStatus--;
             SetColor();
-            EmitSignal(nameof(status_changed), globid, tileStatus);
+            EmitSignal(nameof(status_changed), Globid, TileStatus);
         }
     }
 
@@ -99,7 +99,7 @@ public class TileScript : Spatial
     {
         var material = new SpatialMaterial();
 
-        switch (tileStatus)
+        switch (TileStatus)
         {
             case -3:
                 material.AlbedoColor = new Color("#888888");
@@ -124,22 +124,22 @@ public class TileScript : Spatial
                 break;
 
         }
-        meshInstance.SetSurfaceMaterial(0, material);
+        MeshInstance.SetSurfaceMaterial(0, material);
 
     }
 
     private void RegisterAdjacentTiles()
     {
-        var result = GetParent().GetChildren().Cast<Spatial>().OrderBy(x => x.Position.DistanceTo(Position)).Take(verticesCount);
+        var result = GetParent().GetChildren().Cast<Spatial>().OrderBy(x => x.Position.DistanceTo(Position)).Take(VerticesCount);
         foreach (var tile in result)
         {
             tile.Connect("status_changed", this, "AdjacentStatusChanged");
         }
 
-        EmitSignal(nameof(status_changed), globid, tileStatus);
+        EmitSignal(nameof(status_changed), Globid, TileStatus);
 
     }
 
     [Signal]
-    public delegate void status_changed(string globid, int status);
+    public delegate void status_changed(string Globid, int status);
 }
