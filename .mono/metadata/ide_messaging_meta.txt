@@ -1,2 +1,2 @@
-﻿59177
-C:/Program Files/Godot/Godot_v3.6.1/Godot_v3.6.1-stable_mono_win64.exe
+﻿62125
+C:/Users/oleme/Desktop/Godot 3/Godot_v3.6.1-stable_mono_win64.exe

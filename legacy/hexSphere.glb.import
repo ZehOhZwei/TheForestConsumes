@@ -2,12 +2,12 @@
 
 importer="scene"
 type="PackedScene"
-path="res://.import/hexSphere.glb-6212325b1f63f060f484dc3eca290338.scn"
+path="res://.import/hexSphere.glb-f47f796979ab085bc959ecf8fe4e6dd7.scn"
 
 [deps]
 
-source_file="res://hexSphere.glb"
-dest_files=[ "res://.import/hexSphere.glb-6212325b1f63f060f484dc3eca290338.scn" ]
+source_file="res://legacy/hexSphere.glb"
+dest_files=[ "res://.import/hexSphere.glb-f47f796979ab085bc959ecf8fe4e6dd7.scn" ]
 
 [params]
 

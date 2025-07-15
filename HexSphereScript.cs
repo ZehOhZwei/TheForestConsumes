@@ -6,9 +6,9 @@ public class HexSphereScript : Spatial
     public override void _Ready()
     {
         var packedScene = GD.Load<PackedScene>("res://Tile.tscn");
-        var children = GD.Load<PackedScene>("res://HexSphere.tscn").Instance().GetChildren();
+        var childFaces = GD.Load<PackedScene>("res://HexSphere5.tscn").Instance().GetChildren();
 
-        foreach (MeshInstance meshInstance in children)
+        foreach (MeshInstance meshInstance in childFaces)
         {
             var tile = packedScene.Instance();
 
@@ -16,6 +16,11 @@ public class HexSphereScript : Spatial
 
             AddChild(tile);
 
+        }
+
+        foreach (Spatial child in GetChildren())
+        {
+            child.CallDeferred("RegisterAdjacentTiles");
         }
     }
 
