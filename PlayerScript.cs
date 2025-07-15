@@ -35,10 +35,6 @@ public class PlayerScript : Spatial
     {
         //DrawForest();
 
-        var shape = new ConvexPolygonShape();
-        shape.Points = vertexes;
-
-        GetParent().GetChild<Area>(2).GetChild<CollisionShape>(0).Shape = shape;
     }
 
     private void OnForestEntered(Area area)
@@ -61,7 +57,7 @@ public class PlayerScript : Spatial
 
     public override void _PhysicsProcess(float delta)
     {
-
+        /*
 
         var isInForest = false;
 
@@ -76,6 +72,7 @@ public class PlayerScript : Spatial
             tempIndexes = indexes.Append(newIndexes[0]).ToArray();
             tempIndexes = indexes.Append(newIndexes[1]).ToArray();
         }
+        */
 
         var RotationX = 0f;
         var RotationY = 0f;
@@ -96,7 +93,6 @@ public class PlayerScript : Spatial
 
         RotateObjectLocal(Vector3.Forward, RotationX * 10);
         RotateObjectLocal(Vector3.Right, RotationY);
-
         moveCounter++;
 
     }

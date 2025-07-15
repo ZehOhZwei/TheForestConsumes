@@ -40,7 +40,6 @@ public class ForestScript : Area
             }
         }
         i = 0;
-        Debug.WriteLine(newPoint);
 
         i++;
     }
