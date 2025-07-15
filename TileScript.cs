@@ -19,6 +19,7 @@ public class TileScript : Spatial
         area = GetChild<Area>(1);
 
         area.GetChild<CollisionShape>(0).Shape = meshInstance.Mesh.CreateConvexShape();
+        area.GetChild<CollisionShape>(0).Shape.Margin = 0.001f;
 
         var vertices = (Vector3[])meshInstance.Mesh.SurfaceGetArrays(0)[0];
         verticesCount = vertices.Length;

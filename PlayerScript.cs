@@ -6,7 +6,9 @@ using System.Linq;
 
 public class PlayerScript : Spatial
 {
-    float rotationAmount = 0.00125f;
+    float speed = 0.00125f;
+
+    int health = 100;
 
     public override void _PhysicsProcess(float delta)
     {
@@ -16,14 +18,14 @@ public class PlayerScript : Spatial
 
         if (Input.IsActionPressed("moveRight"))
         {
-            RotationX += rotationAmount;
+            RotationX += speed;
         }
         if (Input.IsActionPressed("moveLeft"))
         {
-            RotationX += -rotationAmount;
+            RotationX += -speed;
         }
 
-        RotationY += -rotationAmount;
+        RotationY += -speed;
 
         RotateObjectLocal(Vector3.Forward, RotationX * 20);
         RotateObjectLocal(Vector3.Right, RotationY);

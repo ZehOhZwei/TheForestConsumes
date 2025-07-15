@@ -15,5 +15,5 @@ script = ExtResource( 1 )
 wait_time = 3.0
 autostart = true
 
-[connection signal="body_entered" from="Area" to="." method="PlayerEntered"]
+[connection signal="area_entered" from="Area" to="." method="PlayerEntered"]
 [connection signal="timeout" from="Timer" to="." method="UpdateStatus"]

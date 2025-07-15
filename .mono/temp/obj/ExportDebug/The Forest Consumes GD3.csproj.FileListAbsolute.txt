@@ -7,3 +7,13 @@ C:\Users\oleme\Desktop\Game Dev\source\TheForestConsumes GD3\.mono\temp\obj\Expo
 C:\Users\oleme\Desktop\Game Dev\source\TheForestConsumes GD3\.mono\temp\obj\ExportDebug\The Forest Consumes GD3.csproj.CoreCompileInputs.cache
 C:\Users\oleme\Desktop\Game Dev\source\TheForestConsumes GD3\.mono\temp\obj\ExportDebug\The Forest Consumes GD3.dll
 C:\Users\oleme\Desktop\Game Dev\source\TheForestConsumes GD3\.mono\temp\obj\ExportDebug\The Forest Consumes GD3.pdb
+F:\Game Dev\Godot\source\TheForestConsumes\.mono\temp\bin\ExportDebug\The Forest Consumes GD3.dll
+F:\Game Dev\Godot\source\TheForestConsumes\.mono\temp\bin\ExportDebug\The Forest Consumes GD3.pdb
+F:\Game Dev\Godot\source\TheForestConsumes\.mono\temp\obj\ExportDebug\The Forest Consumes GD3.csproj.AssemblyReference.cache
+F:\Game Dev\Godot\source\TheForestConsumes\.mono\temp\obj\ExportDebug\The Forest Consumes GD3.GeneratedMSBuildEditorConfig.editorconfig
+F:\Game Dev\Godot\source\TheForestConsumes\.mono\temp\obj\ExportDebug\The Forest Consumes GD3.AssemblyInfoInputs.cache
+F:\Game Dev\Godot\source\TheForestConsumes\.mono\temp\obj\ExportDebug\The Forest Consumes GD3.AssemblyInfo.cs
+F:\Game Dev\Godot\source\TheForestConsumes\.mono\temp\obj\ExportDebug\The Forest Consumes GD3.csproj.CoreCompileInputs.cache
+F:\Game Dev\Godot\source\TheForestConsumes\.mono\temp\obj\ExportDebug\The Forest Consumes GD3.sourcelink.json
+F:\Game Dev\Godot\source\TheForestConsumes\.mono\temp\obj\ExportDebug\The Forest Consumes GD3.dll
+F:\Game Dev\Godot\source\TheForestConsumes\.mono\temp\obj\ExportDebug\The Forest Consumes GD3.pdb
