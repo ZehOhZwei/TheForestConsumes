@@ -5,11 +5,11 @@ using System;
 
 public class TileScript : Spatial
 {
-    string Globid { get;} = Guid.NewGuid().ToString();
+    string Guid { get; } = System.Guid.NewGuid().ToString();
     MeshInstance MeshInstance { get; set; }
     Area Area { get; set; }
     int VerticesCount { get; set; }
-    Dictionary<string, int>  AdjacentTileStatuses { get; set; } = new Dictionary<string, int>();
+    Dictionary<string, int> AdjacentTileStatuses { get; set; } = new Dictionary<string, int>();
     int TileStatus { get; set; }
     int Progress { get; set; } = 50;
 
@@ -33,35 +33,63 @@ public class TileScript : Spatial
         MeshInstance.Translate(-position);
         Area.Translate(-position);
 
-        var r = new Random();
-        TileStatus = r.Next(-3, 3);
+        TileStatus = 0;
         SetColor();
     }
 
-    private void AdjacentStatusChanged(string Globid, int status)
+
+    private void AdjacentStatusChanged(string guid, int status)
     {
-        if (AdjacentTileStatuses.Keys.Contains(Globid))
+        if (AdjacentTileStatuses.Keys.Contains(guid))
         {
-            AdjacentTileStatuses[Globid] = status;
+            AdjacentTileStatuses[guid] = status;
         }
-        else if(AdjacentTileStatuses.Count < VerticesCount)
+        else if (AdjacentTileStatuses.Count < VerticesCount)
         {
-            AdjacentTileStatuses.Add(Globid, status);
+            AdjacentTileStatuses.Add(guid, status);
+        }
+    }
+
+    private void InitialCities(string guid)
+    {
+        if (Guid == guid)
+        {
+            Urbanize(3);
+        }
+        if (AdjacentTileStatuses.ContainsKey(guid))
+        {
+            Urbanize(2);
+        }
+    }
+
+    public void InitialForest(bool forestCenter)
+    {
+        if (forestCenter)
+        {
+            Forestify(3);
+        }
+        else
+        {
+            Forestify(2);
         }
     }
 
     private void UpdateStatus()
     {
-        Progress += AdjacentTileStatuses.Values.Sum();
-        if (Progress > 100)
+        foreach (var status in AdjacentTileStatuses.Values)
         {
-            Forestify();
-            Progress = 50;
+            Progress += status - TileStatus;
+        }
+
+        if (Progress > 500)
+        {
+            Forestify(1);
+            Progress = 250;
         }
         else if (Progress < 0)
         {
-            Urbanize();
-            Progress = 50;
+            Urbanize(1);
+            Progress = 250;
 
         }
     }
@@ -69,29 +97,35 @@ public class TileScript : Spatial
     private void PlayerEntered(Node body)
     {
         if (body.IsInGroup("player"))
-        {            
-            Forestify();
-            Forestify();
-        }
-    }
-
-    private void Forestify()
-    {
-        if (TileStatus < 3)
         {
-            TileStatus++;
-            SetColor();
-            EmitSignal(nameof(status_changed), Globid, TileStatus);
+            Forestify(2);
         }
     }
 
-    private void Urbanize()
+    private void Forestify(int times)
     {
-        if (TileStatus > -3)
-        {            
-            TileStatus--;
-            SetColor();
-            EmitSignal(nameof(status_changed), Globid, TileStatus);
+        for (int i = 0; i < times; i++)
+        {
+            if (TileStatus < 3)
+            {
+                TileStatus++;
+                SetColor();
+                EmitSignal(nameof(status_changed), Guid, TileStatus);
+            }
+        }
+    }
+
+    private void Urbanize(int times)
+    {
+        for (int i = 0; i < times; i++)
+        {
+
+            if (TileStatus > -3)
+            {
+                TileStatus--;
+                SetColor();
+                EmitSignal(nameof(status_changed), Guid, TileStatus);
+            }
         }
     }
 
@@ -135,11 +169,13 @@ public class TileScript : Spatial
         {
             tile.Connect("status_changed", this, "AdjacentStatusChanged");
         }
+        Connect("status_changed", GetParent(), "ChildStatusChanged");
 
-        EmitSignal(nameof(status_changed), Globid, TileStatus);
+        EmitSignal(nameof(status_changed), Guid, TileStatus);
 
+        GetParent().Connect("init_city", this, "InitialCities");
     }
 
     [Signal]
-    public delegate void status_changed(string Globid, int status);
+    public delegate void status_changed(string Guid, int status);
 }
